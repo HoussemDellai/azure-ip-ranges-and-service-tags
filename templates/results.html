@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results</title>
+</head>
+<body>
+    <h1>Results for IP: {{ ip }}</h1>
+    {% if results %}
+        <ul>
+        {% for serviceId, name, regionId, region, systemService in results %}
+            <li>
+                <strong>Id:</strong> {{ serviceId }} <br>
+                <strong>Name:</strong> {{ name }} <br>
+                <strong>RegionId:</strong> {{ regionId }} <br>
+                <strong>Region:</strong> {{ region }} <br>
+                <strong>SystemService:</strong> {{ systemService }} <br>
+            </li>
+            <hr>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No results found.</p>
+    {% endif %}
+    <a href="/">Back to Search</a>
+</body>
+</html>
