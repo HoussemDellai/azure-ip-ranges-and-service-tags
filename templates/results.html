@@ -9,7 +9,7 @@
     <div class="container mt-5">
         <div class="card shadow-sm p-3 mb-5 bg-secondary rounded">
             <div class="card-body">
-                <h1 class="text-center text-primary">Results for IP: {{ ip }}</h1>
+                <h1 class="text-center">Azure Public IP Region and Service Finder</h1>
                 {% if results %}
                     <div class="list-group mt-4">
                     {% for serviceId, name, regionId, region, systemService in results %}
@@ -28,7 +28,7 @@
                     </div>
                 {% endif %}
                 <div class="text-center mt-3">
-                    <a href="/" class="btn btn-secondary">Back to Search</a>
+                    <a href="/" class="btn btn-primary">Back to Search</a>
                 </div>
             </div>
         </div>
