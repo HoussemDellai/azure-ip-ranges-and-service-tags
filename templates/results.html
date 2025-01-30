@@ -2,25 +2,29 @@
 <html>
 <head>
     <title>Results</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>Results for IP: {{ ip }}</h1>
-    {% if results %}
-        <ul>
-        {% for serviceId, name, regionId, region, systemService in results %}
-            <li>
-                <strong>Id:</strong> {{ serviceId }} <br>
-                <strong>Name:</strong> {{ name }} <br>
-                <strong>RegionId:</strong> {{ regionId }} <br>
-                <strong>Region:</strong> {{ region }} <br>
-                <strong>SystemService:</strong> {{ systemService }} <br>
-            </li>
-            <hr>
-        {% endfor %}
-        </ul>
-    {% else %}
-        <p>No results found.</p>
-    {% endif %}
-    <a href="/">Back to Search</a>
+    <div class="container mt-5">
+        <h1 class="text-center">Results for IP: {{ ip }}</h1>
+        {% if results %}
+            <div class="list-group">
+            {% for serviceId, name, regionId, region, systemService in results %}
+                <div class="list-group-item">
+                    <strong>Id:</strong> {{ serviceId }} <br>
+                    <strong>Name:</strong> {{ name }} <br>
+                    <strong>RegionId:</strong> {{ regionId }} <br>
+                    <strong>Region:</strong> {{ region if region else 'N/A' }} <br>
+                    <strong>SystemService:</strong> {{ systemService }} <br>
+                </div>
+            {% endfor %}
+            </div>
+        {% else %}
+            <div class="alert alert-warning text-center" role="alert">
+                No results found.
+            </div>
+        {% endif %}
+        <a href="/" class="btn btn-secondary mt-3">Back to Search</a>
+    </div>
 </body>
 </html>

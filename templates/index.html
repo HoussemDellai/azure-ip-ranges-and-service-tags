@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>IP Region and Service Finder</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+
 <body>
-    <h1>IP Region and Service Finder</h1>
-    <form action="/search" method="post">
-        <label for="ip">Enter IP address:</label>
-        <input type="text" id="ip" name="ip">
-        <button type="submit">Search</button>
-    </form>
+    <div class="container mt-5">
+        <h1 class="text-center">IP Region and Service Finder</h1>
+        <form action="/search" method="post" class="mt-4">
+            <div class="form-group">
+                <label for="ip">Enter IP address:</label>
+                <input type="text" class="form-control" id="ip" name="ip" placeholder="Enter IP address">
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
 </body>
+
 </html>
