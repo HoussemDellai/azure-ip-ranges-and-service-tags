@@ -3,28 +3,35 @@
 <head>
     <title>Results</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="text-center">Results for IP: {{ ip }}</h1>
-        {% if results %}
-            <div class="list-group">
-            {% for serviceId, name, regionId, region, systemService in results %}
-                <div class="list-group-item">
-                    <strong>Id:</strong> {{ serviceId }} <br>
-                    <strong>Name:</strong> {{ name }} <br>
-                    <strong>RegionId:</strong> {{ regionId }} <br>
-                    <strong>Region:</strong> {{ region if region else 'N/A' }} <br>
-                    <strong>SystemService:</strong> {{ systemService }} <br>
+        <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+            <div class="card-body">
+                <h1 class="text-center text-primary">Results for IP: {{ ip }}</h1>
+                {% if results %}
+                    <div class="list-group mt-4">
+                    {% for serviceId, name, regionId, region, systemService in results %}
+                        <div class="list-group-item list-group-item-action flex-column align-items-start bg-light border-info mb-3 shadow-sm p-3 rounded">
+                            <h5 class="mb-1 text-secondary">Id: <span class="text-dark">{{ serviceId }}</span></h5>
+                            <p class="mb-1 text-muted">Name: <span class="text-info">{{ name }}</span></p>
+                            <p class="mb-1 text-muted">RegionId: <span class="text-info">{{ regionId }}</span></p>
+                            <p class="mb-1 text-muted">Region: <span class="text-info">{{ region if region else 'N/A' }}</span></p>
+                            <p class="mb-1 text-muted">SystemService: <span class="text-info">{{ systemService }}</span></p>
+                        </div>
+                    {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="alert alert-warning text-center mt-4" role="alert">
+                        No results found.
+                    </div>
+                {% endif %}
+                <div class="text-center mt-3">
+                    <a href="/" class="btn btn-secondary">Back to Search</a>
                 </div>
-            {% endfor %}
             </div>
-        {% else %}
-            <div class="alert alert-warning text-center" role="alert">
-                No results found.
-            </div>
-        {% endif %}
-        <a href="/" class="btn btn-secondary mt-3">Back to Search</a>
+        </div>
     </div>
 </body>
 </html>

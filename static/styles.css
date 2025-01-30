@@ -1,0 +1,37 @@
+body {
+    background-color: #f8f9fa;
+}
+
+h1 {
+    margin-bottom: 30px;
+    color: #007bff;
+}
+
+.card {
+    border: none;
+}
+
+.list-group-item {
+    background-color: #e9ecef;
+    border: 1px solid #17a2b8;
+    transition: background-color 0.3s ease;
+}
+
+.list-group-item:hover {
+    background-color: #d6e3e3;
+}
+
+.alert-warning {
+    background-color: #ffc107;
+    color: #856404;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
