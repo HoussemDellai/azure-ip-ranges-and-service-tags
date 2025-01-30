@@ -5,16 +5,16 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/styles.css">
 </head>
-<body>
+<body class="bg-dark text-light">
     <div class="container mt-5">
-        <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+        <div class="card shadow-sm p-3 mb-5 bg-secondary rounded">
             <div class="card-body">
                 <h1 class="text-center text-primary">Results for IP: {{ ip }}</h1>
                 {% if results %}
                     <div class="list-group mt-4">
                     {% for serviceId, name, regionId, region, systemService in results %}
-                        <div class="list-group-item list-group-item-action flex-column align-items-start bg-light border-info mb-3 shadow-sm p-3 rounded">
-                            <h5 class="mb-1 text-secondary">Id: <span class="text-dark">{{ serviceId }}</span></h5>
+                        <div class="list-group-item list-group-item-action flex-column align-items-start bg-dark border-info mb-3 shadow-sm p-3 rounded">
+                            <h5 class="mb-1 text-secondary">Id: <span class="text-light">{{ serviceId }}</span></h5>
                             <p class="mb-1 text-muted">Name: <span class="text-info">{{ name }}</span></p>
                             <p class="mb-1 text-muted">RegionId: <span class="text-info">{{ regionId }}</span></p>
                             <p class="mb-1 text-muted">Region: <span class="text-info">{{ region if region else 'N/A' }}</span></p>

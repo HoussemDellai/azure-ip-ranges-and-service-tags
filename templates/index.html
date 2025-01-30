@@ -5,15 +5,15 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/styles.css">
 </head>
-<body>
+<body class="bg-dark text-light">
     <div class="container mt-5">
-        <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+        <div class="card shadow-sm p-3 mb-5 bg-secondary rounded">
             <div class="card-body">
                 <h1 class="text-center text-primary">IP Region and Service Finder</h1>
                 <form action="/search" method="post" class="mt-4">
                     <div class="form-group">
-                        <label for="ip">Enter IP address:</label>
-                        <input type="text" class="form-control" id="ip" name="ip" placeholder="20.48.202.160">
+                        <label for="ip" class="text-light">Enter IP address:</label>
+                        <input type="text" class="form-control bg-dark text-light border-secondary" id="ip" name="ip" placeholder="20.48.202.160">
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">Search</button>
@@ -24,26 +24,3 @@
     </div>
 </body>
 </html>
-
-<!-- <!DOCTYPE html>
-<html>
-
-<head>
-    <title>IP Region and Service Finder</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-
-<body>
-    <div class="container mt-5">
-        <h1 class="text-center">IP Region and Service Finder</h1>
-        <form action="/search" method="post" class="mt-4">
-            <div class="form-group">
-                <label for="ip">Enter IP address:</label>
-                <input type="text" class="form-control" id="ip" name="ip" placeholder="20.48.202.160">
-            </div>
-            <button type="submit" class="btn btn-primary">Search</button>
-        </form>
-    </div>
-</body>
-
-</html> -->

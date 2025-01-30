@@ -36,6 +36,11 @@ def search():
     data = load_json(file_path)
     results = find_all_regions_and_services(ip, data)
 
+    # sort results per longer name and system service descendantly
+    results = sorted(results, key=lambda x: (len(x[1]), x[4]), reverse=True)
+
+    # results = sorted(results, key=lambda x: (len(x[1]), x[4]))
+
     return render_template('results.html', results=results, ip=ip)
 
 if __name__ == "__main__":

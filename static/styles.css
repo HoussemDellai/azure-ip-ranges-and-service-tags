@@ -1,5 +1,6 @@
 body {
-    background-color: #f8f9fa;
+    background-color: #343a40;
+    color: #f8f9fa;
 }
 
 h1 {
@@ -8,17 +9,18 @@ h1 {
 }
 
 .card {
+    background-color: #495057;
     border: none;
 }
 
 .list-group-item {
-    background-color: #e9ecef;
+    background-color: #495057;
     border: 1px solid #17a2b8;
     transition: background-color 0.3s ease;
 }
 
 .list-group-item:hover {
-    background-color: #d6e3e3;
+    background-color: #6c757d;
 }
 
 .alert-warning {
@@ -34,4 +36,14 @@ h1 {
 .btn-secondary:hover {
     background-color: #5a6268;
     border-color: #545b62;
+}
+
+.form-control {
+    background-color: #495057;
+    color: #f8f9fa;
+    border: 1px solid #6c757d;
+}
+
+.form-control::placeholder {
+    color: #adb5bd;
 }
