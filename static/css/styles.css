@@ -1,0 +1,115 @@
+body {
+    background-color: #343a40;
+    color: #f8f9fa;
+}
+
+h1 {
+    margin-bottom: 30px;
+    color: #ffffff;
+}
+
+.card-body {
+    background-color: ;
+}
+
+.card {
+    background-color: #495057;
+    border: none;
+}
+
+.list-group-item {
+    background-color: #495057;
+    border: 1px solid #17a2b8;
+    transition: background-color 0.3s ease;
+}
+
+.list-group-item:hover {
+    background-color: #6c757d;
+}
+
+.alert-warning {
+    background-color: #ffc107;
+    color: #856404;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+.btn-custom {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-custom:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+.form-control {
+    background-color: #495057;
+    color: #f8f9fa;
+    border: 1px solid #6c757d;
+}
+
+.form-control::placeholder {
+    color: #adb5bd;
+}
+
+.sample-ip {
+    background-color: white;
+    color: #007bff;
+    border: none;
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
+}
+.sample-ip:hover {
+    background-color: #f8f9fa;
+    text-decoration: none;
+}
+.form-control-lg {
+    font-size: 2.25rem;  /* Larger font size */
+    padding: 1rem 1.5rem; /* Larger padding */
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+.btn-primary:focus, .btn-primary.focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+
+.btn-primary:disabled, .btn-primary.disabled {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #0062cc;
+    border-color: #005cbf;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}

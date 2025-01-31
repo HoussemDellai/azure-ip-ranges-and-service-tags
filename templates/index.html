@@ -5,20 +5,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/styles.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <style>
-        .sample-ip {
-            background-color: white;
-            color: #007bff;
-            border: none;
-            padding: 5px 10px;
-            margin: 5px;
-            cursor: pointer;
-        }
-        .sample-ip:hover {
-            background-color: #f8f9fa;
-            text-decoration: none;
-        }
-    </style>
 </head>
 <body class="bg-dark text-light">
     <div class="container mt-5">
@@ -29,13 +15,12 @@
                 </div>
                 <h1 class="text-center">Azure Public IP Region and Service Finder</h1>
                 <form id="ipForm" class="mt-4">
-                    <div class="form-group">
-                        <input type="text" class="form-control bg-dark text-light border-secondary" id="ip" name="ip" placeholder="20.48.202.160" value="{{ ip }}">
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-lg bg-dark text-light border-secondary" id="ip" name="ip" placeholder="Enter IP address" value="{{ ip }}">
+                        <div class="input-group-prepend">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
                     </div>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary">Search</button>
-                    </div>
-                </form>
                 <div class="text-center mt-3">
                     <p>Try these sample IPs:</p>
                     <button class="sample-ip" data-ip="20.48.202.160">20.48.202.160</button>
