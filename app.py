@@ -1,7 +1,6 @@
 import json
-import os
 import ipaddress
-from flask import Flask, request, render_template
+from flask import Flask, request, jsonify, render_template
 
 app = Flask(__name__)
 
@@ -21,25 +20,27 @@ def find_all_regions_and_services(ip, data):
                 regionId = item["properties"]["regionId"]
                 region = item["properties"]["region"]
                 service = item["properties"]["systemService"]
-                results.append((serviceId, name, regionId, region, service))
+                results.append({
+                    "serviceId": serviceId,
+                    "name": name,
+                    "regionId": regionId,
+                    "region": region,
+                    "systemService": service
+                })
     return results
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    ip = request.args.get('ip', '')
+    return render_template('index.html', ip=ip)
 
-@app.route('/search', methods=['POST'])
+@app.route('/search')
 def search():
-    ip = request.form['ip']
+    ip = request.args.get('ip')
     file_path = "ServiceTags_Public_20250127.json"  # Path to your JSON file
-
     data = load_json(file_path)
     results = find_all_regions_and_services(ip, data)
-
-    # sort results per longer name and system service descendantly
-    results = sorted(results, key=lambda x: (len(x[1]), x[4]), reverse=True)
-
-    return render_template('results.html', results=results, ip=ip)
+    return jsonify(results=results)
 
 if __name__ == "__main__":
     app.run(debug=True)

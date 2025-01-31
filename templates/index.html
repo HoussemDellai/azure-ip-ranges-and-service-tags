@@ -4,23 +4,112 @@
     <title>Azure Public IP Region and Service Finder</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .sample-ip {
+            background-color: white;
+            color: #007bff;
+            border: none;
+            padding: 5px 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        .sample-ip:hover {
+            background-color: #f8f9fa;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body class="bg-dark text-light">
     <div class="container mt-5">
         <div class="card shadow-sm p-3 mb-5 bg-secondary rounded">
             <div class="card-body">
                 <h1 class="text-center">Azure Public IP Region and Service Finder</h1>
-                <form action="/search" method="post" class="mt-4">
+                <form id="ipForm" class="mt-4">
                     <div class="form-group">
                         <label for="ip" class="text-light">Enter IP address:</label>
-                        <input type="text" class="form-control bg-dark text-light border-secondary" id="ip" name="ip" placeholder="20.48.202.160">
+                        <input type="text" class="form-control bg-dark text-light border-secondary" id="ip" name="ip" placeholder="Enter IP address" value="{{ ip }}">
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">Search</button>
                     </div>
                 </form>
+                <div class="text-center mt-3">
+                    <p>Try these sample IPs:</p>
+                    <button class="sample-ip" data-ip="20.48.202.160">20.48.202.160</button>
+                    <button class="sample-ip" data-ip="20.40.104.96">20.40.104.96</button>
+                    <button class="sample-ip" data-ip="4.149.254.68">4.149.254.68</button>
+                </div>
+                <div class="text-center mt-3" id="loadingSpinner" style="display: none;">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+                <div id="results" class="mt-5" style="display: none;">
+                    <h2 class="text-center">Results</h2>
+                    <div class="list-group mt-4" id="resultsList"></div>
+                    <div class="text-center mt-3">
+                        <button id="backBtn" class="btn btn-custom">Back to Search</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function() {
+            var ip = '{{ ip }}';
+            if (ip) {
+                searchIP(ip);
+            }
+
+            $('#ipForm').on('submit', function(event) {
+                event.preventDefault();
+                var ip = $('#ip').val();
+                var newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?ip=' + ip;
+                window.history.pushState({ path: newUrl }, '', newUrl);
+                searchIP(ip);
+            });
+
+            $('#backBtn').on('click', function() {
+                $('#results').hide();
+                $('#ipForm')[0].reset();
+                $('#loadingSpinner').hide();
+                var newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+                window.history.pushState({ path: newUrl }, '', newUrl);
+            });
+
+            $('.sample-ip').on('click', function() {
+                var ip = $(this).data('ip');
+                $('#ip').val(ip);
+                var newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?ip=' + ip;
+                window.history.pushState({ path: newUrl }, '', newUrl);
+                searchIP(ip);
+            });
+
+            function searchIP(ip) {
+                $('#loadingSpinner').show();
+                $('#results').hide();
+                $.get('/search', { ip: ip }, function(data) {
+                    $('#resultsList').empty();
+                    if (data.results.length > 0) {
+                        data.results.forEach(function(result) {
+                            var item = `
+                                <div class="list-group-item list-group-item-action flex-column align-items-start bg-dark border-info mb-3 shadow-sm p-3 rounded">
+                                    <h5 class="mb-1 text-secondary">Name: <span class="text-light">${result.name}</span></h5>
+                                    <p class="mb-1 text-muted">SystemService: <span class="text-info">${result.systemService}</span></p>
+                                    <p class="mb-1 text-muted">Region: <span class="text-info">${result.region ? result.region : 'N/A'}</span></p>
+                                    <p class="mb-1 text-muted">RegionId: <span class="text-info">${result.regionId}</span></p>
+                                </div>`;
+                            $('#resultsList').append(item);
+                        });
+                    } else {
+                        $('#resultsList').html('<div class="alert alert-warning text-center" role="alert">No results found.</div>');
+                    }
+                    $('#loadingSpinner').hide();
+                    $('#results').show();
+                });
+            }
+        });
+    </script>
 </body>
 </html>
